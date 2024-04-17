@@ -22,6 +22,9 @@
                     <a class="nav-link" href="{% url 'contact' %}">Контакты</a>
                 </li>
             </ul>
+            <a href="{% url 'register' %}">
+                <button class="btn btn-outline-warning">Регистрация</button>
+            </a>
             <form role="search">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search">
             </form>
@@ -35,6 +38,13 @@
             {% block content %}
             {% endblock %}
         </div>
+
+        {% if massages %}
+            {% for mess in massages %}
+                <div class="alert alert-success">{{ mess }}</div>
+            {% endfor %}
+        {% endif %}
+
         <aside class="col-md-4">
             <h3>
                 Боковая часть
