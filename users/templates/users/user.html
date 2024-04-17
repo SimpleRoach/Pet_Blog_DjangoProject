@@ -1,23 +1,15 @@
 {% extends 'blog/base.html' %}
 
 {% block title %}
-    {{ title }}
+    Страница авторизации
 {% endblock %}
 
 {% block content %}
-    <h1>{{ title }}</h1>
+    <h1>Страница авторизации</h1>
     <form method="post">
-
         {% csrf_token %} {#  Токен, позволяющий передавать данные   #}
         {{ form.as_p }}
-        <button class="btn btn-outline-warning" type="submit">Регистрация</button>
-
-        <p>
-            Ужк зарегистрированы? -->
-
-            <a class="navbar-brand" href="{% url 'user' %}">Войти</a>
-            {#            <a href="{% url 'user' %}">Войти </a>#}
-        </p>
+        <button class="btn btn-outline-warning" type="submit">Войти</button>
     </form>
 {% endblock %}
 

@@ -3,6 +3,22 @@ from django.contrib.auth.models import User
 
 
 # from django.contrib.auth.forms import UserCreationForm
+class MySingUsersForm(forms.Form):
+    username = forms.CharField(required=True,
+                               widget=forms.TextInput(attrs={
+                                   'placeholder': 'Username',
+                                   'class': 'form-control'}))
+    password1 = forms.CharField(required=True,
+                                widget=forms.PasswordInput(attrs={
+                                    'placeholder': 'Пароль',
+                                    'class': 'form-control'}))
+
+    class Meta:
+        model = User
+        fields = [
+            'username',
+            'password1'
+        ]
 
 
 # MyRegUsersForm
