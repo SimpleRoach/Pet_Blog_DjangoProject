@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    {% for post in news %}
+        <div class="alert alert-light">
+            <h1>{{ post.title }}</h1>
+            <p>{{ post.text }}</p>
+            <span class="text-muted">Публикация: {{ post.date }}</span>
+            <p>
+                <b>Автор:</b>
+                <mark>{{ post.avtor }}</mark>
+            </p>
+
+        </div>
+    {% endfor %}
+{% endblock %}
