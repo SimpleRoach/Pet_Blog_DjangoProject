@@ -12,6 +12,7 @@ class MySingUsersForm(forms.Form):
                                 widget=forms.PasswordInput(attrs={
                                     'placeholder': 'Пароль',
                                     'class': 'form-control'}))
+    # Видимо тут я должен выполнить правильное написание метода сохранения
 
     class Meta:
         model = User
