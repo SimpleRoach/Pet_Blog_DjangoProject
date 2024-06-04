@@ -14,7 +14,7 @@ def singup(request):
             return redirect('home')
     form = MySingUsersForm()
     return render(request,
-                  'users/registration.html',
+                  'users/authorization.html',
                   {
                       'title': 'Страница входа',
                       'form': form
