@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 
-# from django.contrib.auth.forms import UserCreationForm
+
 class MySingUsersForm(UserCreationForm):
     username = forms.CharField(required=True,
                                widget=forms.TextInput(attrs={
