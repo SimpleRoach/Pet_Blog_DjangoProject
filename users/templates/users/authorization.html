@@ -12,7 +12,13 @@
         {{ form.as_p }}
         <button class="btn btn-outline-warning" type="submit">Вход</button>
 
+        <p>
+            <br>
+            Ещё не зарегистрированы? &nbsp;&nbsp;&nbsp;&nbsp;-->&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="navbar-brand" href="{% url 'reg' %}">Зарегестрироваться</a>
+        </p>
     </form>
+
 {% endblock %}
 
 <!DOCTYPE html>
