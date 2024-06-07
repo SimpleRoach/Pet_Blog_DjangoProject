@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import login
 
 
-def singup(request):
+def login(request):
     if request.method == 'POST':
         form = MySingUsersForm(request.POST)
         if form.is_valid():
@@ -22,13 +22,13 @@ def singup(request):
 
 
 
-def regis(request):
+def signup(request):
     if request.method == 'POST':
         form = MyRegUsersForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('success_url')  # Замените 'success_url' на ваш URL
+            return redirect('users/registration.html')
     else:
         form = MyRegUsersForm()
 

@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 
-class MySingUsersForm(UserCreationForm):
+class MySingUsersForm(forms.Form):
     username = forms.CharField(required=True,
                                widget=forms.TextInput(attrs={
                                    'placeholder': 'Username',
@@ -14,6 +14,11 @@ class MySingUsersForm(UserCreationForm):
                                     'placeholder': 'Пароль',
                                     'class': 'form-control'}))
 
+    def save (self):
+        user = User.objects.create_user(
+            username=self.cleaned_data.get('username'),
+            password=self.cleaned_data.get('password'),
+        )
 
     class Meta:
         model = User
