@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 
-class MySingUsersForm(forms.Form):
+class MyLoginUsersForm(forms.Form):
     username = forms.CharField(required=True,
                                widget=forms.TextInput(attrs={
                                    'placeholder': 'Username',
@@ -29,7 +29,7 @@ class MySingUsersForm(forms.Form):
 
 
 # MyRegUsersForm
-class MyRegUsersForm(forms.Form):
+class MySingupUsersForm(forms.Form):
     email = forms.EmailField(required=True,
                              max_length=254,
                              widget=forms.TextInput(attrs={

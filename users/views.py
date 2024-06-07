@@ -1,17 +1,17 @@
 from django.shortcuts import render, redirect
-from .forms import MyRegUsersForm, MySingUsersForm
+from .forms import MySingupUsersForm, MyLoginUsersForm
 from django.contrib import messages
 from django.contrib.auth import login
 
 
 def login(request):
     if request.method == 'POST':
-        form = MySingUsersForm(request.POST)
+        form = MyLoginUsersForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Вы успешно зашли!')
             return redirect('home')
-    form = MySingUsersForm()
+    form = MyLoginUsersForm()
     return render(request,
                   'users/authorization.html',
                   {
@@ -24,15 +24,15 @@ def login(request):
 
 def signup(request):
     if request.method == 'POST':
-        form = MyRegUsersForm(request.POST)
+        form = MySingupUsersForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect('users/registration.html')
     else:
-        form = MyRegUsersForm()
+        form = MySingupUsersForm()
 
-    form = MyRegUsersForm()
+    form = MySingupUsersForm()
 
     return render(request,
                   'users/registration.html',
