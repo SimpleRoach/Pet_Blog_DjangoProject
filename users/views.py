@@ -8,7 +8,6 @@ def user_login(request):
     if request.method == 'POST':
         form = MyLoginUsersForm(request.POST)
         if form.is_valid():
-            form.save()
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             user = authenticate (request, username = username,
@@ -19,6 +18,8 @@ def user_login(request):
                 return redirect('home')
             else:
                 messages.error(request, 'Неверное имя пользователя или пароль')
+        else:
+            messages.error(request, 'Форма невалидна')
         return render(request,
                       'users/authorization.html',
                       {
@@ -27,12 +28,12 @@ def user_login(request):
                       })
     else:
         form = MyLoginUsersForm()
-    return render(request,
-                  'users/authorization.html',
-                  {
-                      'title': 'Страница входа',
-                      'form': form
-                  })
+        return render(request,
+                      'users/authorization.html',
+                      {
+                          'title': 'Страница входа',
+                          'form': form
+                      })
 
 
 
