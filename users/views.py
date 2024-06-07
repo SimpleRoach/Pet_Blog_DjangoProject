@@ -19,12 +19,20 @@ def user_login(request):
                 return redirect('home')
             else:
                 messages.error(request, 'Неверное имя пользователя или пароль')
-            return render(request,
-                          'users/authorization.html',
-                          {
-                              'title' : 'Страница входа',
-                              'form' : form
-                          })
+        return render(request,
+                      'users/authorization.html',
+                      {
+                          'title' : 'Страница входа',
+                          'form' : form
+                      })
+    else:
+        form = MyLoginUsersForm()
+    return render(request,
+                  'users/authorization.html',
+                  {
+                      'title': 'Страница входа',
+                      'form': form
+                  })
 
 
 
