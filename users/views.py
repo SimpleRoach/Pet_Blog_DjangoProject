@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login
 
 
-def login(request):
+def user_login(request):
     if request.method == 'POST':
         form = MyLoginUsersForm(request.POST)
         if form.is_valid():
@@ -28,7 +28,7 @@ def login(request):
 
 
 
-def signup(request):
+def user_signup(request):
     if request.method == 'POST':
         form = MySingupUsersForm(request.POST)
         if form.is_valid():
