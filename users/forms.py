@@ -13,12 +13,6 @@ class MyLoginUsersForm(forms.Form):
                                     'placeholder': 'Пароль',
                                     'class': 'form-control'}))
 
-    def save (self):
-        user = User.objects.create_user(
-            username=self.cleaned_data.get('username'),
-            password=self.cleaned_data.get('password'),
-        )
-
     class Meta:
         model = User
         fields = [
@@ -27,7 +21,6 @@ class MyLoginUsersForm(forms.Form):
         ]
 
 
-# MyRegUsersForm
 class MySingupUsersForm(forms.Form):
     email = forms.EmailField(required=True,
                              max_length=254,
