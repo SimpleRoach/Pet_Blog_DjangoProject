@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import MySingupUsersForm, MyLoginUsersForm
 from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import authenticate, login as auth_login
 
 
 def login(request):
@@ -9,16 +9,22 @@ def login(request):
         form = MyLoginUsersForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Вы успешно зашли!')
-            return redirect('home')
-    form = MyLoginUsersForm()
-    return render(request,
-                  'users/authorization.html',
-                  {
-                      'title': 'Страница входа',
-                      'form': form
-                  })
-
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate (request, username = username,
+                                 password = password)
+            if user is not None:
+                auth_login(request, user)
+                messages.success(request, 'Вы успешно зашли!')
+                return redirect('home')
+            else:
+                messages.error(request, 'Неверное имя пользователя или пароль')
+            return render(request,
+                          'users/authorization.html',
+                          {
+                              'title' : 'Страница входа',
+                              'form' : form
+                          })
 
 
 
@@ -27,12 +33,11 @@ def signup(request):
         form = MySingupUsersForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
-            return redirect('users/registration.html')
+            auth_login(request, user)
+            messages.success(request, 'Вы успешно зарегистрировались!')
+            return redirect('home')
     else:
         form = MySingupUsersForm()
-
-    form = MySingupUsersForm()
 
     return render(request,
                   'users/registration.html',
