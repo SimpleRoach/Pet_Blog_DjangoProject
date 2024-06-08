@@ -10,9 +10,9 @@ def home(request):
     return render(request, 'blog/home.html', data)
 
 
-# from django.http import HttpResponse
+
 
 
 def contact(request):
     return render(request, 'blog/contacti.html', {'title': 'Страница контактов: '})
-# Create your views here.
+
