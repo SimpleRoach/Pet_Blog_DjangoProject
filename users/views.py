@@ -34,11 +34,11 @@ def user_login(request):
                           'title': 'Страница входа',
                           'form': form
                       })
+
 def user_logout(request):
     logout(request)
     messages.success(request,'Вы успешно вышли!')
     return redirect('home')
-
 
 def user_signup(request):
     if request.method == 'POST':
@@ -57,3 +57,6 @@ def user_signup(request):
                       'title': 'Страница регистрации',
                       'form': form
                   })
+
+def user_profile(request):
+    return render(request, 'users/profile.html')
