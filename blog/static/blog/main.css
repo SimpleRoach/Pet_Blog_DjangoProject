@@ -14,3 +14,13 @@ body {
 .tg_admin {
     color: #346a32;
 }
+
+.message {
+    display: block;
+    opacity: 1;
+    transition: opacity 4.05s linear;
+}
+
+.message.fade-out {
+    opacity: 0;
+}
