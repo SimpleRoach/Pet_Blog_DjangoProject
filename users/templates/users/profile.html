@@ -4,6 +4,25 @@
     Личный кабинет
 {% endblock %}
 
+{% block content %}
+    <h1>Личный кабинет</h1>
+    <br>
+    <br>
+    
+    
+    <div class="profile-info-container">
+        <div class="profile-info-row">
+            <span class="profile-label">Юзернейм :</span>
+            <span class="profile-value">{{ user.username }}</span>
+        </div>
+        
+        <div class="profile-info-row">
+            <span class="profile-label">email :</span>
+            <span class="profile-value">{{ user.email }}</span>
+        </div>
+    </div>
+{% endblock %}
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
