@@ -22,14 +22,26 @@
                     <a class="nav-link" href="{% url 'contact' %}">Контакты</a>
                 </li>
             </ul>
-            <ul class="navbar-nav mb-2 ml-3">
-                <li class="nav-item">
-                    <a class="navbar-brand" href="{% url 'sig' %}">Регистрация</a>
-                </li>
-                <li class="nav-item">
-                    <a class="navbar-brand" href="{% url 'log' %}">Войти</a>
-                </li>
-            </ul>
+{# Кнопки справа сверху, которые типа то есть, то нет в зависимости от авторизации пользователя #}
+            {% if not user.is_authenticated %}
+                <ul class="navbar-nav mb-2 ml-3">
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="{% url 'sig' %}">Регистрация</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="{% url 'log' %}">Войти</a>
+                    </li>
+                </ul>
+            {% else %}
+                <ul class="navbar-nav mb-2 ml-3">
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="{% url 'sig' %}">Профиль</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="{% url 'logout' %}">Выйти</a>
+                    </li>
+                </ul>
+            {% endif %}
 
             <form role="search">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search">
