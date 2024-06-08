@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import MySingupUsersForm, MyLoginUsersForm
 from django.contrib import messages
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, logout, login as auth_login
 
 
 def user_login(request):
@@ -34,7 +34,10 @@ def user_login(request):
                           'title': 'Страница входа',
                           'form': form
                       })
-
+def user_logout(request):
+    logout(request)
+    messages.success(request,'Вы успешно вышли!')
+    return redirect('home')
 
 
 def user_signup(request):
