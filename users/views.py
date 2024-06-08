@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import MySingupUsersForm, MyLoginUsersForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, logout, login as auth_login
+from django.contrib.auth.decorators import login_required
 
 
 def user_login(request):
@@ -58,5 +59,6 @@ def user_signup(request):
                       'form': form
                   })
 
+@login_required
 def user_profile(request):
     return render(request, 'users/profile.html')
