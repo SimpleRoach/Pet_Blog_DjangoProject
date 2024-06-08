@@ -4,7 +4,7 @@ from .models import News
 
 def home(request):
     data = {
-        'news': News.objects.all(),
+        'news': News.objects.all().order_by('-id'),
         'title': 'Global page',
     }
     return render(request, 'blog/home.html', data)
