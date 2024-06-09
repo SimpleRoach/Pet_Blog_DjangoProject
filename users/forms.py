@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
+from .models import Profile
 
 
 class MyLoginUsersForm(forms.Form):
@@ -83,3 +84,27 @@ class MySingupUsersForm(forms.Form):
                   'password1',
                   'password2'
                   ]
+
+class ProfileUpdateForm(forms.ModelForm):
+    email = forms.EmailField(required=True,
+                             max_length=254,
+                             widget=forms.TextInput(attrs={
+                                 'placeholder': 'Email',
+                                 'class': 'form-control'}))
+    username = forms.CharField(required=True,
+                               widget=forms.TextInput(attrs={
+                                   'placeholder': 'Username',
+                                   'class': 'form-control'}))
+    class Meta:
+        model = User
+        fields = ['email',
+                  'username',
+                  ]
+class ProfileFotoForm(forms.Form):
+    image = forms.ImageField(required=False,
+                             label='Загрузить фото',
+                             )
+
+    class Meta:
+        model = Profile
+        fields = ['image']

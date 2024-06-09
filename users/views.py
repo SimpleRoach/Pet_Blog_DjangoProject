@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import MySingupUsersForm, MyLoginUsersForm
+from .forms import MySingupUsersForm, MyLoginUsersForm, ProfileFotoForm, ProfileUpdateForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, logout, login as auth_login
 from django.contrib.auth.decorators import login_required
@@ -61,4 +61,11 @@ def user_signup(request):
 
 @login_required
 def user_profile(request):
-    return render(request, 'users/profile.html')
+    profileForm = ProfileFotoForm()
+    updateUserForm = ProfileUpdateForm()
+
+    data = {
+        'profileForm' : profileForm,
+        'updateUserForm' : updateUserForm
+    }
+    return render(request, 'users/profile.html', data)
