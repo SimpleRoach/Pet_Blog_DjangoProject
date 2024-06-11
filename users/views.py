@@ -19,18 +19,23 @@ def user_login(request):
             password = form.cleaned_data.get('password1')
             user = authenticate (request, username = username,
                                  password = password)
+
             if user is not None:
                 auth_login(request, user)
                 messages.success(request, 'Вы успешно зашли!')
                 return redirect('home')
+
             else:
                 messages.error(request, 'Неверное имя пользователя или пароль')
+
         else:
             messages.error(request, 'Форма невалидна')
+
         return render(request,
                       'users/authorization.html',
                       data
                       )
+
     else:
         form = MyLoginUsersForm()
         data = {
@@ -43,21 +48,27 @@ def user_login(request):
                       data
                       )
 
+
 def user_logout(request):
     logout(request)
     messages.success(request,'Вы успешно вышли!')
     return redirect('home')
 
+
 def user_signup(request):
+
     if request.method == 'POST':
         form = MySingupUsersForm(request.POST)
+
         if form.is_valid():
             user = form.save()
             auth_login(request, user)
             messages.success(request, 'Вы успешно зарегистрировались!')
             return redirect('home')
+
     else:
         form = MySingupUsersForm()
+
     data ={
         'title': 'Страница регистрации',
         'form': form
@@ -66,6 +77,7 @@ def user_signup(request):
                   'users/registration.html',
                   data
                   )
+
 
 @login_required
 def user_profile(request):
