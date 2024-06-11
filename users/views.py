@@ -6,8 +6,14 @@ from django.contrib.auth.decorators import login_required
 
 
 def user_login(request):
+
     if request.method == 'POST':
         form = MyLoginUsersForm(request.POST)
+        data = {
+            'title': 'Страница входа',
+            'form': form
+        }
+
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
@@ -23,18 +29,19 @@ def user_login(request):
             messages.error(request, 'Форма невалидна')
         return render(request,
                       'users/authorization.html',
-                      {
-                          'title' : 'Страница входа',
-                          'form' : form
-                      })
+                      data
+                      )
     else:
         form = MyLoginUsersForm()
+        data = {
+            'title': 'Страница входа',
+            'form': form
+        }
+
         return render(request,
                       'users/authorization.html',
-                      {
-                          'title': 'Страница входа',
-                          'form': form
-                      })
+                      data
+                      )
 
 def user_logout(request):
     logout(request)
@@ -51,13 +58,14 @@ def user_signup(request):
             return redirect('home')
     else:
         form = MySingupUsersForm()
-
+    data ={
+        'title': 'Страница регистрации',
+        'form': form
+    }
     return render(request,
                   'users/registration.html',
-                  {
-                      'title': 'Страница регистрации',
-                      'form': form
-                  })
+                  data
+                  )
 
 @login_required
 def user_profile(request):
@@ -68,4 +76,7 @@ def user_profile(request):
         'profileForm' : profileForm,
         'updateUserForm' : updateUserForm
     }
-    return render(request, 'users/profile.html', data)
+    return render(request,
+                  'users/profile.html',
+                  data
+                  )

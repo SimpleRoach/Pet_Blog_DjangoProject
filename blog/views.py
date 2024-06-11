@@ -5,14 +5,25 @@ from .models import News
 def home(request):
     data = {
         'news': News.objects.all().order_by('-id'),
-        'title': 'Global page',
+        'title': 'Главная страница',
     }
-    return render(request, 'blog/home.html', data)
+    return render(
+        request,
+        'blog/home.html',
+        data
+    )
 
 
 
 
 
 def contact(request):
-    return render(request, 'blog/contacti.html', {'title': 'Страница контактов: '})
+    data = {
+        'title': 'Страница контактов',
+    }
+    return render(
+        request,
+        'blog/contacti.html',
+        data
+    )
 
