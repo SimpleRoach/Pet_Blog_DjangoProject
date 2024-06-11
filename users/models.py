@@ -10,4 +10,5 @@ class Profile(models.Model):
 
     class Meta:
         verbose_name = 'Личный кабинет'
+        verbose_name_plural = 'Личные кабинеты пользователей'
 # Create your models here.
