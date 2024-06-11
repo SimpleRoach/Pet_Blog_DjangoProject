@@ -127,3 +127,4 @@ LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'log'
 
 MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
