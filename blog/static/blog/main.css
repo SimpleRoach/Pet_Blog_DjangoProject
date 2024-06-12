@@ -8,7 +8,7 @@ body {
 
 .navbar {
     border-color: #bfbfbf;
-    color: #e31010;
+    color: #a85757;
 }
 
 .tg_admin {
@@ -23,22 +23,4 @@ body {
 
 .message.fade-out {
     opacity: 0;
-}
-/* Стили для profile.html (для личного кабинета)*/
-.profile-info-container {
-    width: 300px;
-}
-.profile-info-row {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 10px;
-}
-.profile-label {
-    width: 100px;
-    text-align: right;
-    margin-right: 10px;
-    font-weight: bold;
-}
-.profile-value {
-    flex-grow: 1;
 }
