@@ -17,4 +17,4 @@ class News(models.Model):
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
 #
-#
+#Select UUID FROM public.my_table where TIMESTAMPz < YYYY-MM-DD
